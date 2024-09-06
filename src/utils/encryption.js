@@ -5,8 +5,8 @@ const generatePasswordHash = async (password, salt = 10) => {
   return hash
 }
 
-const isPasswordMatch = async (password, hash) => {
-  return await bcrypt.compareSync(password, hash)
+const isPasswordMatch = (password, hash) => {
+  return bcrypt.compareSync(password, hash)
 }
 
 module.exports = {
