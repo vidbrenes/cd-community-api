@@ -12,7 +12,7 @@ const login = async (req, res) => {
     
   try {
     const user = await getUserByUsername(username, true)
-
+    
     if (!user || !isPasswordMatch(password, user?.password)) {
       return res.sendStatus(401)
     }
@@ -24,7 +24,7 @@ const login = async (req, res) => {
 
     // FOR SECURITY SAKE, FRONTEND SHOULD SAVE THIS TOKEN IN MEMORY (NOT LOCAL/SESSION STORAGE OR COOKIES)
     res.cookie(REFRESH_TOKEN_COOKIE_NAME, refreshToken, { httpOnly: true, maxAge: REFRESH_TOKEN_MAX_AGE })
-    res.json({ accessToken })
+    res.json({ ok: true, data: { accessToken } })
   } catch (error) {
     // TODO LOG ERROR
     console.log(error)

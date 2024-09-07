@@ -17,6 +17,9 @@ app.use(express.json());
 
 
 // ROUTES
+app.get(`/`, (req, res) => {
+  res.send('<html><body><h1>CD COMMUNITY API</h1></html></body>')
+})
 app.use(`${API_PATH}/auth`, authRouter)
 // ADD AUTHORIZATION MIDDLEWARE
 app.use(`${API_V1_PATH}/users`, v1UserRouter)
@@ -32,6 +35,10 @@ sequelize.sync().then(result => {
 }).catch(err => {
   console.log('DB err: ', err)
 })
+
+// app.listen(PORT, ()  => {
+//   console.log(`Server is up on port ${PORT}`)
+// })
 
 // app.listen(PORT, () => {
 //   console.log(`Server is up on port ${PORT}`)

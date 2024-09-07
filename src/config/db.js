@@ -1,9 +1,10 @@
 const { Sequelize } = require('sequelize')
+require('dotenv').config()
 
-const sequelize = new Sequelize('cd-test', 'cdadmin', '04X0skvHsl', {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   dialect: 'mysql',
-  host: 'database-1.c7e08oiog885.us-west-2.rds.amazonaws.com',
-  port: 3306,
+  host: process.env.DB_CONNECTION,
+  port: process.env.DB_PORT,
 })
 
 // const testConnection = async () => { 
